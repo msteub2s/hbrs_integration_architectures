@@ -1,4 +1,4 @@
-package com.example.accessingdatamongodb;
+package com.example.integrationproject.command;
 
 import java.util.List;
 import java.util.Optional;

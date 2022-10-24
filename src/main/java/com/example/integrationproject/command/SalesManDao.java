@@ -1,4 +1,4 @@
-package com.example.accessingdatamongodb;
+package com.example.integrationproject.command;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +29,9 @@ public class SalesManDao implements Dao<SalesMan>{
     @Override
     public void update(int sid, String[] params) {
         for(int i = 0; i < salesManList.size(); i++) {
-            if(salesManList.get(i).id == String.valueOf(sid)) {
-                salesManList.get(i).setFirstname = params[0];
-                salesManList.get(i).setLastname = params[1];
+            if(salesManList.get(i).getId() == Integer.valueOf(sid)) {
+                salesManList.get(i).setFirstname(params[0]);
+                salesManList.get(i).setLastname(params[1]);
                 break;
             }
         }
