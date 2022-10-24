@@ -1,0 +1,12 @@
+1666617021290:add 1 2
+1666617049640:add 2 4
+1666617524812:addSalesMan Guenter Hannes 6
+1666617554713:addSalesMan "Guenter" "Hannes" 6
+1666617570951:stacktrace
+1666617653250:addSM Guenter Hannes 6
+1666619856407:add record 3 3
+1666620953312:read SalesMan 2
+1666620963734:read salesman 2
+1666621921343:query salesman lastname Brauer
+1666622099309:stacktrace
+1666622291071:query salesman lastname Brauer
