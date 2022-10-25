@@ -2,7 +2,6 @@ package com.example.integrationproject.command;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class SalesManDao implements Dao<SalesMan>{
 
@@ -12,8 +11,8 @@ public class SalesManDao implements Dao<SalesMan>{
     }
 
     @Override
-    public Optional<SalesMan> get(int id) {
-        return Optional.ofNullable(salesManList.get((int)id));
+    public SalesMan get(int id) {
+        return salesManList.get((int)id);
     }
 
     @Override
