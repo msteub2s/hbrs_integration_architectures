@@ -1,6 +1,5 @@
 package com.example.integrationproject.command;
 
-import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -9,9 +8,7 @@ import org.bson.Document;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellComponent;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 import static com.mongodb.client.model.Filters.eq;
 
