@@ -1,6 +1,5 @@
 package com.example.integrationproject.command;
 
-import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -9,9 +8,7 @@ import org.bson.Document;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellComponent;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -32,7 +29,7 @@ public class ShellCommands implements ManagePersonal{
 
     @Override
     @ShellMethod(value = "Add Record.", key={"add record", "addR"})
-    public void addPerformanceReord(int record, int sid) {
+    public void addPerformanceRecord(int record, int sid) {
         EvaluationRecord rec = new EvaluationRecord(record);
         recordsColl.insertOne(rec.toDocument().append("SalesManID", sid));
     }
@@ -63,28 +60,34 @@ public class ShellCommands implements ManagePersonal{
     @Override
     @ShellMethod(value = "read Evaluation", key={"read evaluation", "readE"})
     public EvaluationRecord readEvaluationRecords(int sid) {
-        String[][] Data = jsonToArray(recordsColl.find(eq("salesManID", sid)).first());
+        String[][] Data = jsonToArray(recordsColl.find(eq("SalesManID", sid)).first());
         return new EvaluationRecord(Integer.parseInt(Data[1][1]));
     }
 
     @Override
-    public void updateSalesMan(int id, SalesMan updatedSalesMan) {//String[] params
-
+    @ShellMethod(value = "update Salesman", key={"update salesman", "updateSM"})
+    public void updateSalesMan(int id, String updateFirstname, String updateLastname, int updateId) {
+        salesmenColl.replaceOne(eq("id", id),
+                new SalesMan(updateFirstname, updateLastname, updateId).toDocument());
     }
 
     @Override
-    public void updateEvaluationRecord(int salesManID, EvaluationRecord updatedRecord) {//String[] params
-
+    @ShellMethod(value = "update Evaluation", key={"update evaluation", "updateE"})
+    public void updateEvaluationRecord(int salesManID, int record, int updateId) {
+        recordsColl.replaceOne(eq("SalesManID", salesManID),
+                new EvaluationRecord(record).toDocument().append("SalesManID", updateId));
     }
 
     @Override
+    @ShellMethod(value = "delete Salesman", key={"delete salesman", "deleteSM"})
     public void deleteSalesMan(int id) {
-
+        salesmenColl.deleteOne(eq("id", id));
     }
 
     @Override
+    @ShellMethod(value = "delete Evaluation", key={"delete evaluation", "deleteE"})
     public void deleteEvaluationRecord(int id) {
-
+        recordsColl.deleteOne(eq("SalesManID", id));
     }
 
     public String[][] jsonToArray(Document myDoc){

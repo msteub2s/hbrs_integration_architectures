@@ -10,3 +10,15 @@
 1666621921343:query salesman lastname Brauer
 1666622099309:stacktrace
 1666622291071:query salesman lastname Brauer
+1666624924973:read evaluation 3
+1666626305286:update salesman 2 {Jakob,Brauer,2}
+1666626385412:update salesman 2 {"Jakob", "Brauer", "2"}
+1666626443334:update salesman 2 [Jakob, Brauer, 2]
+1666627082652:update salesman 2 Jakob null -1
+1666627166067:stacktrace
+1666627513821:update salesman 2 Jakob Brauer 2
+1666627585172:update evaluation 3 5
+1666627731332:add record 7 3
+1666627772228:update evaluation 3 3 3
+1666627825339:delete salesman 4
+1666627858802:delete evaluation 3

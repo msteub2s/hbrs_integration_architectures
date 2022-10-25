@@ -21,4 +21,9 @@ public class EvaluationRecord {
         document.append("rating" , this.overallRating );
         return document;
     }
+
+    @Override
+    public String toString() {
+        return "rating: " + getRating();
+    }
 }
