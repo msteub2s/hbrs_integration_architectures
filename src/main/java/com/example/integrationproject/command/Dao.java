@@ -10,7 +10,6 @@ public interface Dao<T>{
 
     void create (T t);
     void update (int sid, String[] params);
-
     void delete (T t);
 
 }
