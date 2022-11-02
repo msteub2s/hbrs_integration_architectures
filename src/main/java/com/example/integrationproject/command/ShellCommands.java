@@ -1,5 +1,7 @@
 package com.example.integrationproject.command;
 
+import com.example.integrationproject.dto.EvaluationRecord;
+import com.example.integrationproject.dto.SalesMan;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;

@@ -1,17 +1,18 @@
-package com.example.integrationproject.command;
+package com.example.integrationproject.dto;
 
 import org.bson.Document;
 
 public class SalesMan {
     private String firstname;
-    private String lastname;
+    private String lastName;
     private Integer id;
 
     public SalesMan(String firstname, String lastname, Integer id) {
         this.firstname = firstname;
-        this.lastname = lastname;
+        this.lastName = lastname;
         this.id = id;
     }
+    public SalesMan(){};
 
     public String getFirstname() {
         return firstname;
@@ -22,11 +23,11 @@ public class SalesMan {
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastname(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     public Integer getId() {
@@ -40,13 +41,13 @@ public class SalesMan {
     public Document toDocument() {
         org.bson.Document document = new Document();
         document.append("firstname" , this.firstname );
-        document.append("lastname" , this.lastname );
+        document.append("lastName" , this.lastName );
         document.append("id" , this.id);
         return document;
     }
 
     @Override
     public String toString() {
-        return "firstname: " + this.firstname + " lastname: " + this.lastname + " id: " + this.id;
+        return "firstname: " + this.firstname + " lastName: " + this.lastName + " id: " + this.id;
     }
 }

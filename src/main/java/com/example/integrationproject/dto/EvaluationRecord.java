@@ -1,4 +1,4 @@
-package com.example.integrationproject.command;
+package com.example.integrationproject.dto;
 
 import org.bson.Document;
 

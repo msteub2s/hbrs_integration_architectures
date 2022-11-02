@@ -1,5 +1,7 @@
 package com.example.integrationproject.command;
 
+import com.example.integrationproject.dto.EvaluationRecord;
+
 import java.util.ArrayList;
 import java.util.List;
 
