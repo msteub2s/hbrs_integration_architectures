@@ -1,9 +1,11 @@
-package com.example.integrationproject.command;
+package com.example.integrationproject.dao;
+
+import com.example.integrationproject.dto.EvaluationRecord;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EvaluationRecordDao implements Dao<EvaluationRecord>{
+public class EvaluationRecordDao implements Dao<EvaluationRecord> {
 
     // Implementation Dao missing. Check inherited update method for arguments
 

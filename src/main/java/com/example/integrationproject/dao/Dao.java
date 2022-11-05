@@ -1,4 +1,4 @@
-package com.example.integrationproject.command;
+package com.example.integrationproject.dao;
 
 import java.util.List;
 

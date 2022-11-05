@@ -1,9 +1,11 @@
-package com.example.integrationproject.command;
+package com.example.integrationproject.dao;
+
+import com.example.integrationproject.dto.SalesMan;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SalesManDao implements Dao<SalesMan>{
+public class SalesManDao implements Dao<SalesMan> {
 
     private List<SalesMan> salesManList = new ArrayList<>();
 

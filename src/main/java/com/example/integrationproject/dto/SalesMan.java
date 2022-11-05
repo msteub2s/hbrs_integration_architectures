@@ -1,4 +1,4 @@
-package com.example.integrationproject.command;
+package com.example.integrationproject.dto;
 
 import org.bson.Document;
 
@@ -12,6 +12,13 @@ public class SalesMan {
         this.lastname = lastname;
         this.id = id;
     }
+
+    public SalesMan(Document doc) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.id = id;
+    }
+    public SalesMan(){};
 
     public String getFirstname() {
         return firstname;
