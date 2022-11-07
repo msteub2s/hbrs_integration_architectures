@@ -1,5 +1,7 @@
 package com.example.integrationproject.command;
 
+import com.example.integrationproject.dto.EvaluationRecord;
+import com.example.integrationproject.dto.SalesMan;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -8,6 +10,7 @@ import org.bson.Document;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellComponent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;
@@ -30,8 +33,8 @@ public class ShellCommands implements ManagePersonal{
     @Override
     @ShellMethod(value = "Add Record.", key={"add record", "addR"})
     public void addPerformanceRecord(int record, int sid) {
-        EvaluationRecord rec = new EvaluationRecord(record);
-        recordsColl.insertOne(rec.toDocument().append("SalesManID", sid));
+        EvaluationRecord rec = new EvaluationRecord(record, sid);
+        recordsColl.insertOne(rec.toDocument());
     }
 
     @Override
@@ -43,25 +46,15 @@ public class ShellCommands implements ManagePersonal{
 
     @Override
     @ShellMethod(value = "query SalesMan", key={"query salesman", "querySM"})
-    public List<SalesMan> querySalesMan(String attribute, String key) {
-     /*   List<SalesMan> salesManList = new ArrayList<>();
-        Block<Document> blockToList = new Block<Document>() {
-            @Override
-            public void apply(final Document document) {
-                String[][] Data = jsonToArray(document);
-                salesManList.add(new SalesMan(Data[1][1], Data[2][1], Integer.parseInt(Data[3][1])));
-            }
-        };
-        salesmenColl.find(eq(attribute, key)).forEach((Consumer<? super Document>) blockToList);
-        return salesManList;*/
-        return null;
+    public List<Document> querySalesMan(String attribute, String key) {
+        return salesmenColl.find(eq(attribute, key)).into(new ArrayList<>());
     }
 
     @Override
     @ShellMethod(value = "read Evaluation", key={"read evaluation", "readE"})
     public EvaluationRecord readEvaluationRecords(int sid) {
         String[][] Data = jsonToArray(recordsColl.find(eq("SalesManID", sid)).first());
-        return new EvaluationRecord(Integer.parseInt(Data[1][1]));
+        return new EvaluationRecord(Integer.parseInt(Data[1][1]), Integer.parseInt(Data[2][1]));
     }
 
     @Override
@@ -75,7 +68,7 @@ public class ShellCommands implements ManagePersonal{
     @ShellMethod(value = "update Evaluation", key={"update evaluation", "updateE"})
     public void updateEvaluationRecord(int salesManID, int record, int updateId) {
         recordsColl.replaceOne(eq("SalesManID", salesManID),
-                new EvaluationRecord(record).toDocument().append("SalesManID", updateId));
+                new EvaluationRecord(record, updateId).toDocument());
     }
 
     @Override

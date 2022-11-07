@@ -1,12 +1,10 @@
 package com.example.integrationproject;
 
-import com.example.integrationproject.command.EvaluationRecord;
-import com.example.integrationproject.command.EvaluationRecordDao;
-import com.example.integrationproject.command.SalesMan;
-import com.example.integrationproject.command.SalesManDao;
+import com.example.integrationproject.dto.EvaluationRecord;
+import com.example.integrationproject.dao.EvaluationRecordDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 

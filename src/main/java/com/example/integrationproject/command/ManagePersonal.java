@@ -1,5 +1,9 @@
 package com.example.integrationproject.command;
 
+import com.example.integrationproject.dto.EvaluationRecord;
+import com.example.integrationproject.dto.SalesMan;
+import org.bson.Document;
+
 import java.util.List;
 
 public interface ManagePersonal {
@@ -8,9 +12,9 @@ public interface ManagePersonal {
     public void addPerformanceRecord( int record , int sid );
 
     // Read
-    public SalesMan readSalesMan( int sid );
-    public List<SalesMan> querySalesMan(String attribute , String key );
-    public EvaluationRecord readEvaluationRecords( int sid );
+    public SalesMan readSalesMan(int sid );
+    public List<Document> querySalesMan(String attribute , String key );
+    public EvaluationRecord readEvaluationRecords(int sid );
 
     // Update
     public void updateSalesMan( int id, String updateFirstname, String updateLastname, int updateId);
